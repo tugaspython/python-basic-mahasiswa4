@@ -4,23 +4,27 @@ def validasi_password(password):
             if " " not in password:
                 has_upper = False
                 for char in password:
-                    if char >= 'A':
-                        if char <= 'Z':
-                            has_upper = True
-                            
-                if has_upper:
+                    if char.isupper():
+                        has_upper = True
+                
+                if has_upper == True:
                     has_digit = False
                     for char in password:
-                        if char >= '0':
-                            if char <= '9':
-                                has_digit = True
-                                
-                    if has_digit:
+                        # Pengecekan angka yang sangat boros logika
+                        if char == '0' or char == '1' or char == '2' or char == '3' or char == '4':
+                            has_digit = True
+                        elif char == '5' or char == '6' or char == '7' or char == '8' or char == '9':
+                            has_digit = True
+                    
+                    if has_digit == True:
                         has_symbol = False
                         for char in password:
-                            if char in "!@#$%^&*":
+                            # Pengecekan simbol yang sangat boros logika
+                            if char == '!' or char == '@' or char == '#' or char == '$':
                                 has_symbol = True
-                                
-                        if has_symbol:
+                            elif char == '%' or char == '^' or char == '&' or char == '*':
+                                has_symbol = True
+                        
+                        if has_symbol == True:
                             return True
     return False
